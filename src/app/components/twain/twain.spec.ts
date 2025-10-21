@@ -1,9 +1,9 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { TwainService } from '@core/services/twain.service';
+import { defer, of } from 'rxjs';
+import { asyncData, asyncError } from 'src/testing';
 
 import { Twain } from './twain';
-import { TwainService } from '@core/services/twain.service';
-import { defer, of, throwError } from 'rxjs';
-import { asyncData, asyncError } from 'src/testing';
 
 describe('Twain', () => {
   let component: Twain;
@@ -62,7 +62,7 @@ describe('Twain', () => {
               reject('TwainService test failure');
             });
           });
-        })
+        }),
       );
       fixture.detectChanges(); // onInit()
       // sync spy errors immediately after init

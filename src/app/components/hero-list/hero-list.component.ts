@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { Observable } from 'rxjs';
 import { Hero } from '@core/models';
 import { HeroService } from '@core/services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-heroes',
@@ -13,10 +12,13 @@ import { HeroService } from '@core/services';
   imports: [AsyncPipe],
 })
 export class HeroListComponent {
+  private router = inject(Router);
+  private heroService = inject(HeroService);
+
   heroes: Observable<Hero[]>;
   selectedHero!: Hero;
 
-  constructor(private router: Router, private heroService: HeroService) {
+  constructor() {
     this.heroes = this.heroService.getHeroes();
   }
 

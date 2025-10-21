@@ -1,11 +1,11 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { Hero } from '@core/models';
+import { appProviders } from 'src/app/app.config';
+import { click } from 'src/testing';
 
 import { DashboardHero } from './dashboard-hero';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
-import { appProviders } from 'src/app/app.config';
-import { Hero } from '@core/models';
-import { click } from 'src/testing';
 
 describe('DashboardHero', () => {
   let component: DashboardHero;

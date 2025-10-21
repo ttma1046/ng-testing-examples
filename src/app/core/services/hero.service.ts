@@ -18,13 +18,13 @@ export class HeroService {
   /** GET heroes from the server */
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl).pipe(
-      tap((heroes) => this.log('fetched heroes')),
-      catchError(this.handleError('getHeroes'))
+      tap(() => this.log('fetched heroes')),
+      catchError(this.handleError('getHeroes')),
     ) as Observable<Hero[]>;
   }
 
   /** GET hero by id. Return `undefined` when id not found */
-  getHero<Data>(id: number | string): Observable<Hero> {
+  getHero(id: number | string): Observable<Hero> {
     if (typeof id === 'string') {
       id = parseInt(id, 10);
     }
@@ -35,7 +35,7 @@ export class HeroService {
         const outcome = h ? 'fetched' : 'did not find';
         this.log(`${outcome} hero id=${id}`);
       }),
-      catchError(this.handleError<Hero>(`getHero id=${id}`))
+      catchError(this.handleError<Hero>(`getHero id=${id}`)),
     );
   }
 
@@ -45,7 +45,7 @@ export class HeroService {
   addHero(hero: Hero): Observable<Hero> {
     return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
       tap((addedHero) => this.log(`added hero w/ id=${addedHero.id}`)),
-      catchError(this.handleError<Hero>('addHero'))
+      catchError(this.handleError<Hero>('addHero')),
     );
   }
   /** DELETE: delete the hero from the server */
@@ -54,16 +54,16 @@ export class HeroService {
     const url = `${this.heroesUrl}/${id}`;
 
     return this.http.delete<Hero>(url, httpOptions).pipe(
-      tap((_) => this.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<Hero>('deleteHero'))
+      tap(() => this.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<Hero>('deleteHero')),
     );
   }
 
   /** PUT: update the hero on the server */
-  updateHero(hero: Hero): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
-      tap((_) => this.log(`updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
+  updateHero(hero: Hero): Observable<Hero> {
+    return this.http.put<Hero>(this.heroesUrl, hero, httpOptions).pipe(
+      tap(() => this.log(`updated hero id=${hero.id}`)),
+      catchError(this.handleError<Hero>('updateHero')),
     );
   }
   /**

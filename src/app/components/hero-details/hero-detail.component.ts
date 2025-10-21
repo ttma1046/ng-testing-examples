@@ -1,8 +1,7 @@
 // #docplaster
 import { Component } from '@angular/core';
-
 import { Hero } from '@core/models';
-import { TitleCasePipe, FormsModule } from '@shared/shared';
+import { FormsModule } from '@shared/shared';
 
 @Component({
   selector: 'app-hero-detail',
@@ -13,11 +12,15 @@ import { TitleCasePipe, FormsModule } from '@shared/shared';
 export class HeroDetailComponent {
   hero: Hero = { id: 1, name: '' };
 
-  save(): void {}
+  save(): void {
+    console.log('saved');
+  }
 
   cancel() {
     this.gotoList();
   }
 
-  gotoList() {}
+  gotoList() {
+    console.log('saved');
+  }
 }

@@ -1,15 +1,14 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingHarness } from '@angular/router/testing';
 
 import { HeroDetailComponent } from './hero-detail.component';
-import { DebugElement } from '@angular/core';
 
 // let harness: RouterTestingHarness;
 
 describe('BannerComponent', () => {
   let component: HeroDetailComponent;
   let fixture: ComponentFixture<HeroDetailComponent>;
-  let h1: HTMLElement;
+  // let h1: HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

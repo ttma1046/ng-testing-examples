@@ -1,13 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserService } from '@core/services';
 
 import { WelcomeComponent } from './welcome';
-import { UserService } from '@core/services';
 
 describe('WelcomeComponent', () => {
   let component: WelcomeComponent;
   let fixture: ComponentFixture<WelcomeComponent>;
   let userService: UserService;
-  let componentUserService: UserService;
   let el: HTMLElement;
 
   beforeEach(async () => {

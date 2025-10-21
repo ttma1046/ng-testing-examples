@@ -92,10 +92,10 @@ describe('demo (with TestBed):', () => {
     });
 
     it('should allow the use of fakeAsync', fakeAsync(() => {
-      let value: any;
-      service.getPromiseValue().then((val: any) => (value = val));
+      service.getPromiseValue().then((val: string) => {
+        expect(val).toBe('promise value');
+      });
       tick(); // Trigger JS engine cycle until all promises resolve.
-      expect(value).toBe('promise value');
     }));
   });
 });

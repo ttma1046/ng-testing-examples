@@ -3,7 +3,7 @@ import { Component, input, output } from '@angular/core';
 import { Hero } from '@core/models';
 
 @Component({
-  selector: 'dashboard-hero',
+  selector: 'app-dashboard-hero',
   imports: [UpperCasePipe],
   templateUrl: './dashboard-hero.html',
   styleUrl: './dashboard-hero.scss',

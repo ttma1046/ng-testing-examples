@@ -1,4 +1,5 @@
 import { inject, Injectable } from '@angular/core';
+
 import { ValueService } from './value.service';
 
 @Injectable({

@@ -1,7 +1,8 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { appProviders } from 'src/app/app.config';
-import { TestHostComponent } from './test-component';
 import { click } from 'src/testing';
+
+import { TestHostComponent } from './test-component';
 
 describe('DashboardHeroComponent when inside a test host', () => {
   let testHost: TestHostComponent;

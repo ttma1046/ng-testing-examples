@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, ComponentFixtureAutoDetect } from '@angular/core/testing';
+import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
 
 import { BannerComponent } from './banner.component';
 

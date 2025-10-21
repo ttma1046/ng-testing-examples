@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { UserService } from '@core/services/user.service';
 
 @Component({
@@ -8,6 +8,6 @@ import { UserService } from '@core/services/user.service';
 export class WelcomeComponent {
   private userService = inject(UserService);
   welcome = computed(() =>
-    this.userService.isLoggedIn() ? 'Welcome, ' + this.userService.user().name : 'Please log in.'
+    this.userService.isLoggedIn() ? 'Welcome, ' + this.userService.user().name : 'Please log in.',
   );
 }
