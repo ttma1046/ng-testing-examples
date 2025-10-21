@@ -11,21 +11,17 @@ describe('WelcomeComponent', () => {
   let el: HTMLElement;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [WelcomeComponent],
-    }).compileComponents();
-
     fixture = TestBed.createComponent(WelcomeComponent);
+    fixture.autoDetectChanges();
     component = fixture.componentInstance;
-    fixture.detectChanges();
 
     // UserService actually injected into the component
     userService = fixture.debugElement.injector.get(UserService);
-    // componentUserService = userService;
+    componentUserService = userService;
 
     // UserService from the root injector
-    // userService = TestBed.inject(UserService);
-    //  get the "welcome" element by CSS selector (e.g., by class name)
+    userService = TestBed.inject(UserService);
+    // get the "welcome" element by CSS selector (e.g., by class name)
     el = fixture.nativeElement.querySelector('.welcome');
   });
 

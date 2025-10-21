@@ -1,0 +1,6 @@
+<p class="twain">
+  <i>{{ quote | async }}</i>
+</p>
+@if (errorMessage()){
+<p class="error">{{ errorMessage() }}</p>
+}

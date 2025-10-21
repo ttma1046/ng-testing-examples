@@ -10,7 +10,7 @@
  *
  * Using `asap` scheduler - as in `of(value, asap)` - doesn't work either.
  */
-import {defer} from 'rxjs';
+import { defer, throwError } from 'rxjs';
 
 // #docregion async-data
 /**
@@ -27,7 +27,9 @@ export function asyncData<T>(data: T) {
  * Create async observable error that errors
  * after a JS engine turn
  */
-export function asyncError<T>(errorObject: any) {
-  return defer(() => Promise.reject(errorObject));
+export function asyncError<T>(errorObject: T) {
+  return throwError(() => {
+    return new Error(errorObject as string);
+  });
 }
 // #enddocregion async-error

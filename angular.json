@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "ng-three-vitest-demo": {
+    "ng-testing-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ng-three-vitest-demo:build:production"
+              "buildTarget": "ng-testing-demo:build:production"
             },
             "development": {
-              "buildTarget": "ng-three-vitest-demo:build:development"
+              "buildTarget": "ng-testing-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
