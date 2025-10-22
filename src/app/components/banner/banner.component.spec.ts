@@ -1,4 +1,4 @@
-import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BannerComponent } from './banner.component';
 
@@ -7,12 +7,7 @@ describe('BannerComponent', () => {
   let fixture: ComponentFixture<BannerComponent>;
   let h1: HTMLElement;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [BannerComponent],
-      providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }],
-    }).compileComponents();
-
+  beforeEach(() => {
     fixture = TestBed.createComponent(BannerComponent);
     component = fixture.componentInstance;
     h1 = fixture.nativeElement.querySelector('h1');
@@ -23,22 +18,41 @@ describe('BannerComponent', () => {
   });
 
   it('should display original title', () => {
-    expect(h1.textContent).toContain(component.title());
+    expect(h1.textContent).toEqual('');
   });
 
-  it('should still see original title after comp.title change', async () => {
-    const oldTitle = component.title();
-    const newTitle = 'Test Title';
-    component.title.set(newTitle);
-    // Displayed title is old because Angular didn't yet run change detection
-    expect(h1.textContent).toContain(oldTitle);
-    await fixture.whenStable();
-    expect(h1.textContent).toContain(newTitle);
+  it('should display original title', () => {
+    fixture.detectChanges();
+    expect(h1.textContent).toContain(component.title());
   });
 
   it('should display a different test title', () => {
     component.title.set('Test Title');
     fixture.detectChanges();
     expect(h1.textContent).toContain(component.title());
+  });
+
+  it('should still see original title after comp.title change', async () => {
+    const oldTitle = component.title();
+    fixture.detectChanges();
+    expect(h1.textContent).toContain(oldTitle);
+
+    const newTitle = 'Test Title';
+    component.title.set(newTitle);
+    fixture.detectChanges();
+    expect(h1.textContent).toContain(newTitle);
+  });
+
+  it('should still see original title after comp.title change', async () => {
+    fixture.detectChanges();
+
+    const oldTitle = component.title();
+    const newTitle = 'Test Title';
+    component.title.set(newTitle);
+
+    expect(h1.textContent).toContain(oldTitle);
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(h1.textContent).toContain(newTitle);
   });
 });

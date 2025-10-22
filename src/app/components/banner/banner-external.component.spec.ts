@@ -18,6 +18,6 @@ describe('BannerComponent', () => {
 
   it('should contain "banner works!"', () => {
     const bannerElement: HTMLElement = fixture.nativeElement;
-    expect(bannerElement.textContent).toContain('Test Tour of Heroes');
+    expect(bannerElement.textContent).toContain('Tour of Heroes');
   });
 });

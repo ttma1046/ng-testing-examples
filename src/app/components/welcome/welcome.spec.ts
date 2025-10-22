@@ -16,7 +16,6 @@ describe('WelcomeComponent', () => {
 
     // UserService actually injected into the component
     userService = fixture.debugElement.injector.get(UserService);
-    componentUserService = userService;
 
     // UserService from the root injector
     userService = TestBed.inject(UserService);
